@@ -3,6 +3,8 @@
 
 **ID actividad: Recu.1**
 
+[Repositorio Anterior con los commits previos](https://github.com/JuanjoSG5/Recuperacion)
+
 **Agrupamiento de la actividad**: Individual
 
 ---
