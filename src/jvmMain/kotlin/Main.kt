@@ -1,12 +1,10 @@
-import androidx.compose.material.MaterialTheme
 import androidx.compose.desktop.ui.tooling.preview.Preview
-import androidx.compose.material.Button
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
 
@@ -15,13 +13,38 @@ import androidx.compose.ui.window.application
 fun App() {
     var text by remember { mutableStateOf("Hello, World!") }
 
-    MaterialTheme {
-        Button(onClick = {
-            text = "Hello, Desktop!"
-        }) {
-            Text(text)
+/*
+    Box(modifier = Modifier.padding(8.dp)) {
+        Column {
+            Button(onClick = { expandedCsv = true }) {
+                Text(text = "Selecciona una fecha")
+            }
+            Text(
+                text = "Carpeta seleccionada: $fileSeleccionado",
+                modifier = Modifier.padding(2.dp)
+            )
+
+            DropdownMenu(
+                expanded = expandedFecha,
+                onDismissRequest = { expandedFecha = false },
+                modifier = Modifier.width(105.dp).heightIn(max = 200.dp)
+            ) {
+                foldersList.forEachIndexed { index, folder ->
+                    DropdownMenuItem(onClick = {
+                        fechaSeleccionada = folder.name
+                        expandedFecha = false
+                    }) {
+                        Text(folder.name)
+                    }
+                }
+            }
         }
     }
+
+    LaunchedEffect(fechaSeleccionada) {
+        val partidas = sacarArchivoPartidas(fechaSeleccionada)
+        listaPartidas = partidas
+    }*/
 }
 
 fun main() = application {
