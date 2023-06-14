@@ -1,13 +1,12 @@
 package fileHandling
 
 object ParameterManager {
+    var folderHandler = FolderHandler
+    var module = "PRO"
+    var saveToDatabase = false
+    var clearDatabase = false
+    var queryDatabase = false
     fun checkParameters(args:Array<String>){
-        var module = "PRO"
-        var folderPath = ""
-        var saveToDatabase = false
-        var clearDatabase = false
-        var queryDatabase = false
-        var folderHandler = FolderHandler
 
         // Parse command-line arguments
         for (i in args.indices) {

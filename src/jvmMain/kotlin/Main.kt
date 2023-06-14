@@ -7,48 +7,26 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Window
 import androidx.compose.ui.window.application
+import fileHandling.FolderHandler
+import fileHandling.ParameterManager
 
-@Composable
-@Preview
-fun App() {
-    var text by remember { mutableStateOf("Hello, World!") }
+import gui.Menu
+import java.io.File
 
-/*
-    Box(modifier = Modifier.padding(8.dp)) {
-        Column {
-            Button(onClick = { expandedCsv = true }) {
-                Text(text = "Selecciona una fecha")
-            }
-            Text(
-                text = "Carpeta seleccionada: $fileSeleccionado",
-                modifier = Modifier.padding(2.dp)
-            )
 
-            DropdownMenu(
-                expanded = expandedFecha,
-                onDismissRequest = { expandedFecha = false },
-                modifier = Modifier.width(105.dp).heightIn(max = 200.dp)
-            ) {
-                foldersList.forEachIndexed { index, folder ->
-                    DropdownMenuItem(onClick = {
-                        fechaSeleccionada = folder.name
-                        expandedFecha = false
-                    }) {
-                        Text(folder.name)
-                    }
-                }
+
+
+fun main(args: Array<String>){
+    ParameterManager.checkParameters(args)
+    var test = application{
+        Window(onCloseRequest = ::exitApplication) {
+            ParameterManager.checkParameters(args)
+            if (args.isNotEmpty()) {
+                Menu().App(ParameterManager.saveToDatabase, ParameterManager.clearDatabase, ParameterManager.queryDatabase)
             }
         }
     }
-
-    LaunchedEffect(fechaSeleccionada) {
-        val partidas = sacarArchivoPartidas(fechaSeleccionada)
-        listaPartidas = partidas
-    }*/
 }
 
-fun main() = application {
-    Window(onCloseRequest = ::exitApplication) {
-        App()
-    }
-}
+
+
