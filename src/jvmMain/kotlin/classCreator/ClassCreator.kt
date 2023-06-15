@@ -14,6 +14,9 @@ import railway.Results
 
 object ClassCreator {
     private var reader:Reader =Reader
+    var alumnos = mutableListOf<Alumno>()
+    var resultadosAprendizaje = mutableListOf<ResultAprendi>()
+    var criteriosEvalu = mutableListOf<criterioEvalu>()
     var udMarks = mutableListOf<Double>()
     var notaRa = mutableListOf<Double>()
     var notaCe = mutableListOf<Double>()
@@ -47,37 +50,34 @@ object ClassCreator {
         }else {
             notaUd = ConcreteCalculator.calculateUdCsv(reader.matrix,notaUd).obj
         }
-        var test = Alumno(siglas,nombre,notaUd,  notaRa,notaCe)
-        println(test)
+        alumnos.add(Alumno(siglas,nombre,notaUd,  notaRa,notaCe))
     }
     fun createCriterioEvalu(siglas:String):Result<MutableList<criterioEvalu>,Results> {
         var ids = CsvParser().resultAprend
         var counter = 0
-        var list = mutableListOf<criterioEvalu>()
         while (counter < notaCe.size){
-            list.add(criterioEvalu(ids[counter],siglas, notaCe[counter]))
+            criteriosEvalu.add(criterioEvalu(ids[counter],siglas, notaCe[counter]))
             counter++
         }
-        println(list )
-        return Result(list,Results.SUCCESSFUL)
+        return Result(criteriosEvalu,Results.SUCCESSFUL)
     }
     fun createResultadoAprend(siglas:String):Result<MutableList<ResultAprendi>,Results> {
         var ids = CsvParser().ud
         var counter = 0
-        var list = mutableListOf<ResultAprendi>()
         while (counter < notaRa.size){
-            list.add(ResultAprendi(ids[counter],siglas, notaRa[counter]))
+            var result = ResultAprendi(ids[counter],siglas, notaRa[counter])
+            result.notaCe = criteriosEvalu
+            resultadosAprendizaje.add(result )
             counter++
         }
-        println(list )
-        return Result(list,Results.SUCCESSFUL)
+        return Result(resultadosAprendizaje,Results.SUCCESSFUL)
     }
     fun createModulo(siglas:String):Result<Modulo,Results> {
         var ids = ParameterManager.module
 
 
         var modulo  = Modulo(ids,siglas)
-
+        modulo.notaRa = resultadosAprendizaje
 
         return Result(modulo,Results.SUCCESSFUL)
     }

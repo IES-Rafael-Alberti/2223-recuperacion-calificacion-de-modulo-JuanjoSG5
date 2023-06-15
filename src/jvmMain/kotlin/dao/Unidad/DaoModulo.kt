@@ -19,13 +19,13 @@ class DaoModulo(private var dataSource: DataSource):Dao<Modulo,Results> {
             conn.prepareStatement(sql).use { stmt ->
                 stmt.setString(1, modulo.nombre)
                 try {
-                    Log.info("DaoUnidad.createEntity -> Executing query")
+                    Log.info("DaoModulo.createEntity -> Executing query")
                     stmt.executeUpdate()
             } catch (e: Exception) {
-                Log.warning("DaoUnidad.createEntity -> $e")
+                Log.warning("DaoModulo.createEntity -> $e")
                 return Result(modulo, Results.FAILURE)
             }
-                Log.info("DaoUnidad.createEntity -> Query executed")
+                Log.info("DaoModulo.createEntity -> Query executed")
                 return Result(modulo, Results.SUCCESSFUL)
             }
         }
@@ -39,7 +39,7 @@ class DaoModulo(private var dataSource: DataSource):Dao<Modulo,Results> {
             conn.prepareStatement(sql).use { stmt ->
                 stmt.setString(1, id)
                 try {
-                    Log.info("DaoUnidad.getById -> Executing query")
+                    Log.info("DaoModulo.getById -> Executing query")
                     val rs = stmt.executeQuery()
                     if (rs.next()) {
                         modulo = Modulo(
@@ -47,10 +47,10 @@ class DaoModulo(private var dataSource: DataSource):Dao<Modulo,Results> {
                                 siglas = rs.getString("siglas")
                         )
                     }
-                    Log.info("DaoUnidad.getById -> Query executed")
+                    Log.info("DaoModulo.getById -> Query executed")
                     return Result(modulo, Results.SUCCESSFUL)
                 } catch (e: Exception) {
-                    Log.warning("DaoUnidad.getById -> $e")
+                    Log.warning("DaoModulo.getById -> $e")
                     return Result(modulo, Results.FAILURE)
                 }
             }
@@ -63,7 +63,7 @@ class DaoModulo(private var dataSource: DataSource):Dao<Modulo,Results> {
         dataSource.connection.use { conn ->
             conn.prepareStatement(sql).use { stmt ->
                 try {
-                    Log.info("DaoUnidad.getAll -> Executing query")
+                    Log.info("DaoModulo.getAll -> Executing query")
                     val resultSet = stmt.executeQuery()
                     while (resultSet.next()) {
                         val nombre = resultSet.getString("nombre")
@@ -71,10 +71,10 @@ class DaoModulo(private var dataSource: DataSource):Dao<Modulo,Results> {
                         val unid = Modulo(nombre,siglas)
                         result.add(unid)
                     }
-                    Log.info("DaoUnidad.getAll -> Query executed")
+                    Log.info("DaoModulo.getAll -> Query executed")
                     return Result(result, Results.SUCCESSFUL)
                 } catch (e: SQLException) {
-                    Log.warning("DaoUnidad.getAll -> $e")
+                    Log.warning("DaoModulo.getAll -> $e")
                     return Result(emptyList(), Results.FAILURE)
                 }
             }
@@ -87,17 +87,17 @@ class DaoModulo(private var dataSource: DataSource):Dao<Modulo,Results> {
             conn.prepareStatement(sql).use { stmt ->
                 stmt.setString(1, entity.nombre)
                 try {
-                    Log.info("DaoUnidad.deleteEntity -> Executing delete")
+                    Log.info("DaoModulo.deleteEntity -> Executing delete")
                     val rowsAffected = stmt.executeUpdate()
                     if (rowsAffected > 0) {
-                        Log.info("DaoUnidad.deleteEntity -> $rowsAffected rows deleted")
+                        Log.info("DaoModulo.deleteEntity -> $rowsAffected rows deleted")
                         return Result(entity, Results.SUCCESSFUL)
                     } else {
-                        Log.info("DaoUnidad.deleteEntity -> 0 rows deleted")
+                        Log.info("DaoModulo.deleteEntity -> 0 rows deleted")
                         return Result(entity, Results.FAILURE)
                     }
                 } catch (e: SQLException) {
-                    Log.warning("DaoUnidad.deleteEntity -> $e")
+                    Log.warning("DaoModulo.deleteEntity -> $e")
                     return Result(entity, Results.FAILURE)
                 }
             }
@@ -158,9 +158,7 @@ class DaoModulo(private var dataSource: DataSource):Dao<Modulo,Results> {
                 }
             }
         }
-
     }
-
 }
 
 
@@ -168,5 +166,7 @@ class DaoModulo(private var dataSource: DataSource):Dao<Modulo,Results> {
 fun main(){
     var dataSource = DataFactory.getDataSource(DataFactory.DataSourceType.Embedded)
     var dod = DaoModulo(dataSource)
+    dod.deleteTable()
+    dod.createTable()
 
 }

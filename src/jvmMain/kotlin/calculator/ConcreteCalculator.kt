@@ -58,7 +58,7 @@ object ConcreteCalculator:Calculator {
             Results.FAILURE -> return Result(emptyList<Double>().toMutableList(), Results.FAILURE)
             Results.SUCCESSFUL -> rows.forEach { row ->
                 val percentage: Double = convertToPercent(row[manager.getIndexOfSecondPercentage(rows).obj]).obj
-                processRaInTheCsv(row[1], percentage)
+                processUdInTheCsv(row[1], percentage)
                 val calculatedRow: MutableList<Double> = createCalculatedRow(percentage)
                 for (index: Int in indexOfPercentage.obj+3 until row.size) {
                     val element: String = row[index]
@@ -92,7 +92,7 @@ object ConcreteCalculator:Calculator {
             ceInTheCsv.add(Pair(criterio, percentage))
         }
     }
-    private fun processRaInTheCsv(rowValue: String, percentage: Double) {
+    private fun processUdInTheCsv(rowValue: String, percentage: Double) {
         var criterios = rowValue.split(",")
         for (criterio in criterios){
             udInTheCsv.add(Pair(criterio, percentage))

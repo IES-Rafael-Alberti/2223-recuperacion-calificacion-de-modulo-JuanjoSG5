@@ -47,6 +47,7 @@ object DataManager {
         }
         return Result(-1, Results.FAILURE)
     }
+
     fun getIndexOfSecondPercentage(rows: MutableList<MutableList<String>>): Result<Int, Results> {
         for (row in rows) {
             var count = 0
