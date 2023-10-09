@@ -1,0 +1,198 @@
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #abb2bf;}
+.s1 { color: #abb2bf;}
+.s2 { color: #c678dd;}
+.s3 { color: #c678dd; font-style: italic;}
+</style>
+</head>
+<body bgcolor="#282c34">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+README.md</font>
+</center></td></tr></table>
+<pre><span class="s0">[![</span><span class="s1">Review Assignment Due Date</span><span class="s0">](</span><span class="s2">https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg</span><span class="s0">)](</span><span class="s2">https://classroom.github.com/a/5rWX6UE7</span><span class="s0">)</span>
+<span class="s3"># </span><span class="s1">Actividad</span><span class="s0">: </span><span class="s1">Recuperación módulo de programación</span>
+
+<span class="s0">**</span><span class="s1">ID actividad</span><span class="s0">: </span><span class="s1">Recu.1</span><span class="s0">**</span>
+
+<span class="s0">[</span><span class="s1">Repositorio Anterior con los commits previos</span><span class="s0">](</span><span class="s2">https://github.com/JuanjoSG5/Recuperacion</span><span class="s0">)</span>
+
+<span class="s0">**</span><span class="s1">Agrupamiento de la actividad</span><span class="s0">**: </span><span class="s1">Individual</span>
+
+<span class="s3">---</span>
+
+<span class="s3">### </span><span class="s1">Descripción</span><span class="s0">:</span>
+
+<span class="s1">La actividad consiste en procesar </span><span class="s0">*</span><span class="s1">un conjunto de archivos</span><span class="s0">* </span><span class="s1">en formato csv, que están almacenados en una carpeta.</span>
+
+<span class="s1">Los archivos contienen las calificaciones de los instrumentos con los que los alumnos del ciclo se han evaluado. El procesamiento consisten en calcular las calificaciones de los criterios de evaluación y resultados de aprendizaje en base a las calificaciones de los instrumentos y las ponderaciones de estos establecidas en el archivo csv.</span>
+
+<span class="s3">&gt; </span><span class="s1">nota</span><span class="s0">: </span><span class="s1">Analiza con cuidado el formato del archivo base y su formato, puesto que cualquier cambio tendrá que ser compatible para que no haya problemas al intentar leer el csv desde cualquier aplicación que soporta este archivo.</span>
+
+<span class="s1">El formato de los archivos será similar al siguiente</span><span class="s0">:</span>
+
+<span class="s0">![](</span><span class="s1">./assets/csv.png</span><span class="s0">)</span>
+
+<span class="s3">1. </span><span class="s1">id de la unidad </span><span class="s0">(</span><span class="s1">Un</span><span class="s0">)</span>
+<span class="s3">2. </span><span class="s1">id del resultado de aprendizaje </span><span class="s0">(</span><span class="s1">RA</span><span class="s0">)</span>
+<span class="s3">3. </span><span class="s1">id de los criterios de evaluación </span><span class="s0">(</span><span class="s1">CE</span><span class="s0">)</span><span class="s1">. Normalmente se trabajará con la letra después del punto.</span>
+<span class="s3">4. </span><span class="s1">ids de los CE afectados </span><span class="s0">(</span><span class="s1">para los que se calculará la nota</span><span class="s0">) </span><span class="s1">por el instrumento.</span>
+<span class="s3">5. </span><span class="s1">Porcentajes que pesa cada CE, en base a los cuales se obtiene la nota total del resultado de aprendizaje.</span>
+<span class="s3">6. </span><span class="s1">id y nombre del alumnado</span>
+<span class="s3">7. </span><span class="s1">descripción del RA</span>
+<span class="s3">8. </span><span class="s1">descripción de cada uno de los CE</span>
+<span class="s3">9. </span><span class="s1">id y descripción de los instrumentos usados para calcular la nota de los CE. Ten en cuenta que a continuación está el peso en porcentaje, que tiene cada instrumento.</span>
+<span class="s3">10. </span><span class="s1">notas de los instrumentos.</span>
+<span class="s3">11. </span><span class="s1">área de calculo, en el que se tendrán que calcular las otras de CE y RA.</span>
+
+<span class="s0">![](</span><span class="s1">./assets/csv2.png</span><span class="s0">)</span>
+
+<span class="s3">1. </span><span class="s1">notas de los RA</span>
+<span class="s3">2. </span><span class="s1">notas de los CE</span>
+
+<span class="s3">&gt; </span><span class="s1">nota</span><span class="s0">: </span><span class="s1">Cualquier duda sobre el formato, aclárala antes de continuar.</span>
+
+<span class="s3">#### </span><span class="s1">Opciones de ejecución del programa.</span>
+
+<span class="s1">Estas opciones se le tienen que indicar al programa al ejecutarlo</span><span class="s0">:</span>
+
+<span class="s3">- </span><span class="s1">`-mo`</span><span class="s0">: </span><span class="s1">indica al programa el `módulo`. Si no se indica nada, se asume el módulo de programación, que se identifica como `PRO`.</span>
+  <span class="s1">`recu -mo PRO`</span>
+<span class="s3">- </span><span class="s1">`-pi`</span><span class="s0">: </span><span class="s1">indica al programa la carpeta origen en la que se encuentran los archivos a procesar.</span>
+  <span class="s1">`recu -pi </span><span class="s0">&lt;pathALaCarpeta&gt;</span><span class="s1">`</span>
+<span class="s3">- </span><span class="s1">`-bd`</span><span class="s0">: </span><span class="s1">indica al programa que la información que se muestra por pantalla tiene que quedar reflejada en base de datos.  Si ya existe, tendrá que actualizarse.</span>
+  <span class="s1">`recu -bd`</span>
+<span class="s3">- </span><span class="s1">`-bd d`</span><span class="s0">: </span><span class="s1">indica al programa que borre la información que hay en la base de datos, quedando limpia de toda información.</span>
+  <span class="s1">`recu -bd d`</span>
+<span class="s3">- </span><span class="s1">`-bd q`</span><span class="s0">: </span><span class="s1">indica al programa que consulte la información que hay en la base de datos. Mostrando por consola en el mismo formato indicado anteriormente.</span>
+  <span class="s1">`recu -bd q`</span>
+
+<span class="s3">&gt; </span><span class="s1">nota</span><span class="s0">: </span><span class="s1">es posible la combinación de los parámetros anteriores siempre y cuando tengan sentido, por ejemplo puedo indicarle</span><span class="s0">:</span>
+<span class="s3">&gt; </span><span class="s1">`recu -mo PRO -pi /home/usuario/csvfiles -bd`</span>
+
+<span class="s3">#### </span><span class="s1">Lectura y parseo del archivo</span>
+
+<span class="s3">##### </span><span class="s0">[*]</span>
+
+<span class="s1">La ruta a la carpeta en la que se encuentran los archivos csv se pasará como parámetro cuando se ejecute el programa. El programa deberá procesar todos los archivos que encuentre en la carpeta.</span>
+
+<span class="s3">&gt; </span><span class="s1">Nota</span><span class="s0">: </span><span class="s1">Para el procesamiento de los archivos no se podrá usar ninguna biblioteca adicional que no sea la clase `FILE` y demás clases que permite leer y escribir en archivos.</span>
+
+<span class="s3">#### </span><span class="s1">Salida</span>
+
+<span class="s3">##### </span><span class="s0">[*] **</span><span class="s1">Consola</span><span class="s0">**</span>
+
+<span class="s1">El programa mostrará como salida, en formato tabla, las calificaciones del módulo teniendo en cuenta que ésta calificación se calcula en base a la nota acumulada de todos los archivos procesados, es decir, la calificación de los resultados de aprendizaje, las calificaciones de los criterios de evaluación. En la tabla tiene que aparecer el id de cada uno de los elementos </span><span class="s0">(</span><span class="s1">Módulo, RAs, CEs</span><span class="s0">)</span><span class="s1">, la descripción y finalmente la calificación. Las tablas serán similares al siguiente diseño</span><span class="s0">:</span>
+
+<span class="s0">![](</span><span class="s1">assets/tablaConsola.png</span><span class="s0">)</span>
+
+<span class="s3">##### </span><span class="s0">[*] **</span><span class="s1">Archivo</span><span class="s0">**</span>
+
+<span class="s1">Tras cada procesamiento, el archivo que se pasa como entrada se modificará para dejar constancia de las calificacioens que se han obtenido en los distintos elementos </span><span class="s0">(</span><span class="s1">RAs, CEs</span><span class="s0">)</span><span class="s1">. Inicialmente se podrá pasar vacio, pero en posteriores llamadas es posible que las calificaciones ya estén establecidas y por tanto se tendrán que actualizar con los nuevos valores calculados.</span>
+
+<span class="s0">![](</span><span class="s1">./assets/csv2.png</span><span class="s0">)</span>
+
+<span class="s3">##### </span><span class="s0">[</span><span class="s1">U7</span><span class="s0">] **</span><span class="s1">Interface gráfica</span><span class="s0">**</span>
+
+<span class="s1">De igual forma, el programa mostrará en la interfaz gráfica las calificaciones, en un diseño similar al siguiente</span><span class="s0">:</span>
+
+<span class="s0">![](</span><span class="s1">assets/gui.png</span><span class="s0">)</span>
+
+<span class="s1">En el que se podrá seleccionar los alumnos y mostrará un resumen de sus notas, tal y como se ve en la imagen anterior.</span>
+
+<span class="s3">##### </span><span class="s0">[</span><span class="s1">U9</span><span class="s0">] **</span><span class="s1">base de ddtos</span><span class="s0">**</span>
+
+<span class="s1">De igual forma, el programa almacenará en base de datos los resultados de procesar los archivos, quedando constancia de las calificaciones del alumnado para los distintos elementos que forman parte de estas. </span><span class="s0">(</span><span class="s1">Módulo, RAs, CEs</span><span class="s0">)</span><span class="s1">.</span>
+
+<span class="s1">Conforme se vayan procesando archivos, se tendrán que incorporar los nuevos elementos y actualizar la calificación del módulo.</span>
+
+<span class="s0">![](</span><span class="s1">./assets/csv2.png</span><span class="s0">)</span>
+
+<span class="s1">En el que se podrá seleccionar los alumnos y mostrará un resumen de sus notas, tal y como se ve en la imagen anterior.</span>
+
+<span class="s0">**</span><span class="s1">Trabajo a realizar</span><span class="s0">:**</span>
+
+<span class="s3">1. </span><span class="s1">Trabajar sobre el formato de los datos y el parseo de estos.</span>
+<span class="s3">2. </span><span class="s1">Trabajar sobre el parseo de argumentos pasados al ejecutar el programa.</span>
+<span class="s3">3. </span><span class="s1">Separa la entrada de datos, procesamiento de datos, salida de datos.</span>
+<span class="s3">4. </span><span class="s1">Usa patrones de diseño, jerarquia de clases.</span>
+<span class="s3">5. </span><span class="s1">Asigna una única responsabilidad por clase, y por métodos.</span>
+<span class="s3">6. </span><span class="s1">Pon nombres coherentes y adecuados a la responsabilidad que realiza la clase </span><span class="s0">(</span><span class="s1">Sustantivos</span><span class="s0">) </span><span class="s1">/métodos </span><span class="s0">(</span><span class="s1">verbos</span><span class="s0">)</span>
+<span class="s3">7. </span><span class="s1">Construir una estructura de datos/clases que soporte lainformación en memoria y facilite realizar las tareas de procesamiento de la información.</span>
+<span class="s3">8. </span><span class="s1">Trabajar por partes las distintas salidas</span><span class="s0">:</span>
+   <span class="s1">a. salida a ficheros.</span>
+   <span class="s1">b. salida a consola.</span>
+   <span class="s1">c. salida a base de datos.</span>
+   <span class="s1">d. interface gráfica.</span>
+<span class="s3">9. </span><span class="s1">Documentar y comentar.</span>
+<span class="s3">10. </span><span class="s1">Genera el ejecutable.</span>
+<span class="s3">11. </span><span class="s1">Crear las capturas de pantallas de aquellas ejecuciones y opciones que funcionen.</span>
+
+<span class="s3">### </span><span class="s1">Recursos</span>
+
+<span class="s3">* </span><span class="s1">Apuntes dado en clase</span>
+<span class="s3">* </span><span class="s1">Recursos vistos en clase.</span>
+
+<span class="s3">### </span><span class="s1">Evaluación y calificación</span>
+
+<span class="s3">#### </span><span class="s1">RA y CE evaluados</span><span class="s0">:</span>
+
+<span class="s1">Se evaluarán las siguientes unidades, con su RA y CE asociados.</span>
+
+<span class="s3">##### </span><span class="s1">Unidad 4.</span>
+
+<span class="s1">a</span><span class="s0">) </span><span class="s1">Entender los fundamentos de la POO</span>
+<span class="s1">i</span><span class="s0">) </span><span class="s1">Haciendo uso del IDE, b</span><span class="s0">) </span><span class="s1">escribir programa simples en los que</span><span class="s0">:</span>
+<span class="s1">c</span><span class="s0">) </span><span class="s1">Se instancian objetos a partir de clases predefinidas, h</span><span class="s0">) </span><span class="s1">haciendo uso de constructores</span>
+<span class="s1">d</span><span class="s0">) </span><span class="s1">Se utilicen métodos, f</span><span class="s0">) </span><span class="s1">haciendo uso de parámetros en la llamada, y propiedades de los objetos.</span>
+<span class="s1">e</span><span class="s0">) </span><span class="s1">Se llamen a métodos estáticos.</span>
+<span class="s1">g</span><span class="s0">) </span><span class="s1">Se incorporan y utilizan librerías.</span>
+
+<span class="s3">##### </span><span class="s1">Unidad 5.</span>
+
+<span class="s1">a</span><span class="s0">) </span><span class="s1">Entender la sintaxis, estructura y componentes típicos de una clase.</span>
+<span class="s1">b,c</span><span class="s0">) </span><span class="s1">Definir clases, con sus e</span><span class="s0">) </span><span class="s1">constructores, d</span><span class="s0">) </span><span class="s1">propiedades y métodos, i</span><span class="s0">) </span><span class="s1">métodos estáticos, en los que se utilicen g</span><span class="s0">) </span><span class="s1">los mecanismos para controlar la visibilidad de clase y miembros.</span>
+<span class="s1">f</span><span class="s0">) </span><span class="s1">Desarrollar programas que instancien y utilicen objetos de las clases creadas anteriormente.</span>
+<span class="s1">h</span><span class="s0">) </span><span class="s1">Definir y utilizar clases heredadas e j</span><span class="s0">) </span><span class="s1">interfaces.</span>
+<span class="s1">k</span><span class="s0">) </span><span class="s1">Crear y utilizar librerías.</span>
+
+<span class="s3">##### </span><span class="s1">Unidad 6.</span>
+
+<span class="s1">a</span><span class="s0">) </span><span class="s1">Entender los conceptos de herencia, superclase y subclase.</span>
+<span class="s1">g</span><span class="s0">) </span><span class="s1">Crear programas en los que e</span><span class="s0">) </span><span class="s1">implementen y utilicen jerarquías de clases, para ello d</span><span class="s0">) </span><span class="s1">crear clases heredadas que sobrescriban la implementación de métodos de la superclase, c</span><span class="s0">) </span><span class="s1">reconociendo la incidencia de los constructores en la herencia y b</span><span class="s0">) </span><span class="s1">utilizando modificadores para bloquear y forzar la herencia de clases y métodos.</span>
+<span class="s1">f</span><span class="s0">) </span><span class="s1">Se han probado y depurado las jerarquías de clases.</span>
+<span class="s1">h</span><span class="s0">) </span><span class="s1">Se ha comentado y documentado el código.</span>
+
+<span class="s3">##### </span><span class="s1">Unidad 7.</span>
+
+<span class="s1">a</span><span class="s0">) </span><span class="s1">Se ha utilizado la consola para realizar operaciones de entrada y salida de información, y b</span><span class="s0">) </span><span class="s1">Se han aplicado formatos en la visualización de la información.</span>
+<span class="s1">c</span><span class="s0">) </span><span class="s1">Conocer las posibilidades de entrada/salida del lenguaje y las librerías asociadas, d</span><span class="s0">) </span><span class="s1">utilizado ficheros para almacenar y recuperar información y e</span><span class="s0">) </span><span class="s1">que utilicen diversos métodos de acceso al contenido de los ficheros.</span>
+<span class="s1">f</span><span class="s0">) </span><span class="s1">Se han utilizado el IDE para crear interfaces gráficos de usuario simples, en las que se g</span><span class="s0">) </span><span class="s1">se controlen eventos, y h</span><span class="s0">) </span><span class="s1">se utilice la gui para la entrada y salida de información.</span>
+
+<span class="s3">##### </span><span class="s1">Unidad 9.</span>
+
+<span class="s1">a</span><span class="s0">) </span><span class="s1">Se han identificado las características y métodos de acceso a sistemas gestores de bases de datos relacionales.</span>
+<span class="s1">b</span><span class="s0">) </span><span class="s1">Se han creado programas en las que crear conexiones con bases de datos, para c</span><span class="s0">) </span><span class="s1">almacenar información en bases de datos, d</span><span class="s0">) </span><span class="s1">recuperar y mostrar información almacenada en bases de datos, efectuar e</span><span class="s0">) </span><span class="s1">borrados y modificaciones sobre la información almacenada y f</span><span class="s0">) </span><span class="s1">que ejecuten consultas sobre bases de datos.</span>
+<span class="s1">g</span><span class="s0">) </span><span class="s1">Se han creado aplicaciones para posibilitar la gestión de información presente en bases de datos relacionales.</span>
+
+<span class="s3">#### </span><span class="s0">**</span><span class="s1">Rubrica</span><span class="s0">**:</span>
+
+<span class="s1">Se construirá en base a la información anterior.</span>
+
+<span class="s0">**</span><span class="s1">Conlleva presentación</span><span class="s0">**: </span><span class="s1">SI</span>
+
+<span class="s3">### </span><span class="s1">Entrega</span>
+
+<span class="s3">&gt; </span><span class="s0">**</span><span class="s1">La actividad tiene que cumplir las condiciones de entrega para poder ser calificada. En caso de no cumplirlas podría calificarse como no entregada.</span>
+
+<span class="s3">* </span><span class="s0">**</span><span class="s1">Conlleva la entrega de capturas de pantallas de las distintas opciones</span><span class="s0">:** </span><span class="s1">Se entregará un documento que contendrán capturas de pantalla de las distintas ejecuciones del programa, mostrando aquellas que funcionan correctamente. Solo se pasará a evaluar aquellas que tengan una captura de pantalla sobre su funcionamiento.</span>
+<span class="s3">* </span><span class="s0">**</span><span class="s1">Conlleva la entrega un ejecutable del programa</span><span class="s0">:** </span><span class="s1">Se tendrá que entregar un enlace al ejecutable del programa, de forma que se pueda probar sin necesidad de ejecutar el IDE. Este enlace puede estar en github.</span>
+<span class="s3">* </span><span class="s0">**</span><span class="s1">Conlleva la entrega de URL a repositorio</span><span class="s0">:** </span><span class="s1">El contenido se entregará en un repositorio github, y en caso de creerlo necesario se trabajará por proyectos dejando constancia de las acciones realizas según cada uno de los perfiles de los usuarios del grupo.</span>
+</pre>
+</body>
+</html>
